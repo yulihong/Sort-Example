@@ -59,7 +59,7 @@ public class Person {
       this.age = age;
    }
 
-   @Override
+   /*@Override
    public boolean equals(Object obj)
    {
 	   if(obj == null)
@@ -83,7 +83,30 @@ public class Person {
 	   result = result*31 + (lastName == null ? 0 : lastName.hashCode());
 	   result = result*31 + (age == null ? 0 : age.hashCode());
 	   return result;
-   }
+   }*/
+   
+   // A better way
+   @Override
+	public boolean equals(Object obj)
+	{
+		if(obj == null)
+			return false;
+		if(this == obj)
+			return true;
+		if(getClass() != obj.getClass())
+			return false;
+		
+		Person person = (Person)obj;
+		return Objects.equals(firstName, person.firstName) &&
+				Objects.equals(lastName, person.lastName) &&
+				Objects.equals(age, person.age);	
+	}
+	
+	@Override
+	public int hashCode(){
+		return Objects.hash(firstName, lastName, age);
+	}
+   
    
    @Override
    public String toString() {
