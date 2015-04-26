@@ -31,6 +31,11 @@ public class PersonSortImpl implements PersonSortService{
 //        }
 //     };
 	
+	
+	/*
+	 * Compare with above commented out comparator class you can see how simple it is when use
+	 * Java 8 java.util.Comparator.
+	 */
 	Comparator<Person> compare = Comparator.comparing((Person p) -> p.getLastName())
 			.thenComparing(p -> p.getFirstName());
 
